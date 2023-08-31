@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shootCompetition.mapper.ShootDataMapper">
+
+    <resultMap id="BaseResultMap" type="com.shootCompetition.domain.vo.ShootDataVO">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="recordId" column="record_id" jdbcType="VARCHAR"/>
+        <result property="shooterId" column="shooter_id" jdbcType="INTEGER"/>
+        <result property="sequence" column="sequence" jdbcType="INTEGER"/>
+        <result property="shootTime" column="shoot_time" jdbcType="TIMESTAMP"/>
+        <result property="aimRingNumber" column="aim_ring_number" jdbcType="DOUBLE"/>
+        <result property="hitRingNumber" column="hit_ring_number" jdbcType="DOUBLE"/>
+        <result property="gunShaking" column="gun_shaking" jdbcType="INTEGER"/>
+        <result property="gunShakingRate" column="gun_shaking_rate" jdbcType="INTEGER"/>
+        <result property="fireShakingRate" column="fire_shaking_rate" jdbcType="INTEGER"/>
+        <result property="fireShaking" column="fire_shaking" jdbcType="INTEGER"/>
+        <result property="shootingAccuracy" column="shooting_accuracy" jdbcType="DOUBLE"/>
+        <result property="gunStability" column="gun_stability" jdbcType="DOUBLE"/>
+        <result property="fireStability" column="fire_stability" jdbcType="DOUBLE"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, record_id, shooter_id, sequence, shoot_time, aim_ring_number, hit_ring_number, gun_shaking, gun_shaking_rate, fire_shaking_rate, fire_shaking, shooting_accuracy, gun_stability, fire_stability, score
+    </sql>
+
+    <select id="list" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM shoot_data
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="recordId != null">
+                AND record_id = #{recordId,jdbcType=VARCHAR}
+            </if>
+            <if test="shooterId != null">
+                AND shooter_id = #{shooterId,jdbcType=INTEGER}
+            </if>
+            <if test="sequence != null">
+                AND sequence = #{sequence,jdbcType=INTEGER}
+            </if>
+            <if test="shootTime != null">
+                AND shoot_time = #{shootTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="aimRingNumber != null">
+                AND aim_ring_number = #{aimRingNumber,jdbcType=DOUBLE}
+            </if>
+            <if test="hitRingNumber != null">
+                AND hit_ring_number = #{hitRingNumber,jdbcType=DOUBLE}
+            </if>
+            <if test="gunShaking != null">
+                AND gun_shaking = #{gunShaking,jdbcType=INTEGER}
+            </if>
+            <if test="gunShakingRate != null">
+                AND gun_shaking_rate = #{gunShakingRate,jdbcType=INTEGER}
+            </if>
+            <if test="fireShakingRate != null">
+                AND fire_shaking_rate = #{fireShakingRate,jdbcType=INTEGER}
+            </if>
+            <if test="fireShaking != null">
+                AND fire_shaking = #{fireShaking,jdbcType=INTEGER}
+            </if>
+            <if test="shootingAccuracy != null">
+                AND shooting_accuracy = #{shootingAccuracy,jdbcType=DOUBLE}
+            </if>
+            <if test="gunStability != null">
+                AND gun_stability = #{gunStability,jdbcType=DOUBLE}
+            </if>
+            <if test="fireStability != null">
+                AND fire_stability = #{fireStability,jdbcType=DOUBLE}
+            </if>
+            <if test="score != null">
+                AND score = #{score,jdbcType=DOUBLE}
+            </if>
+        </where>
+    </select>
+
+    <insert id="add" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO shoot_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="recordId != null">record_id,</if>
+            <if test="shooterId != null">shooter_id,</if>
+            <if test="sequence != null">sequence,</if>
+            <if test="shootTime != null">shoot_time,</if>
+            <if test="aimRingNumber != null">aim_ring_number,</if>
+            <if test="hitRingNumber != null">hit_ring_number,</if>
+            <if test="gunShaking != null">gun_shaking,</if>
+            <if test="gunShakingRate != null">gun_shaking_rate,</if>
+            <if test="fireShakingRate != null">fire_shaking_rate,</if>
+            <if test="fireShaking != null">fire_shaking,</if>
+            <if test="shootingAccuracy != null">shooting_accuracy,</if>
+            <if test="gunStability != null">gun_stability,</if>
+            <if test="fireStability != null">fire_stability,</if>
+            <if test="score != null">score,</if>
+
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="recordId != null">
+                #{recordId,jdbcType=VARCHAR},
+            </if>
+            <if test="shooterId != null">
+                #{shooterId,jdbcType=INTEGER},
+            </if>
+            <if test="sequence != null">
+                #{sequence,jdbcType=INTEGER},
+            </if>
+            <if test="shootTime != null">
+                #{shootTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="aimRingNumber != null">
+                #{aimRingNumber,jdbcType=DOUBLE},
+            </if>
+            <if test="hitRingNumber != null">
+                #{hitRingNumber,jdbcType=DOUBLE},
+            </if>
+            <if test="gunShaking != null">
+                #{gunShaking,jdbcType=INTEGER},
+            </if>
+            <if test="gunShakingRate != null">
+                #{gunShakingRate,jdbcType=INTEGER},
+            </if>
+            <if test="fireShakingRate != null">
+                #{fireShakingRate,jdbcType=INTEGER},
+            </if>
+            <if test="fireShaking != null">
+                #{fireShaking,jdbcType=INTEGER},
+            </if>
+            <if test="shootingAccuracy != null">
+                #{shootingAccuracy,jdbcType=DOUBLE},
+            </if>
+            <if test="gunStability != null">
+                #{gunStability,jdbcType=DOUBLE},
+            </if>
+            <if test="fireStability != null">
+                #{fireStability,jdbcType=DOUBLE},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=DOUBLE},
+            </if>
+
+        </trim>
+    </insert>
+
+    <update id="update">
+        UPDATE shoot_data
+        <set>
+            <if test="recordId != null">
+                record_id = #{recordId,jdbcType=VARCHAR},
+            </if>
+            <if test="shooterId != null">
+                shooter_id = #{shooterId,jdbcType=INTEGER},
+            </if>
+            <if test="sequence != null">
+                sequence = #{sequence,jdbcType=INTEGER},
+            </if>
+            <if test="shootTime != null">
+                shoot_time = #{shootTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="aimRingNumber != null">
+               aim_ring_number = #{aimRingNumber,jdbcType=DOUBLE},
+            </if>
+            <if test="hitRingNumber != null">
+                hit_ring_number = #{hitRingNumber,jdbcType=DOUBLE},
+            </if>
+            <if test="gunShaking != null">
+                gun_shaking = #{gunShaking,jdbcType=INTEGER},
+            </if>
+            <if test="gunShakingRate != null">
+                gun_shaking_rate = #{gunShakingRate,jdbcType=INTEGER},
+            </if>
+            <if test="fireShakingRate != null">
+                fire_shaking_rate = #{fireShakingRate,jdbcType=INTEGER},
+            </if>
+            <if test="fireShaking != null">
+                fire_shaking = #{fireShaking,jdbcType=INTEGER},
+            </if>
+            <if test="shootingAccuracy != null">
+                shooting_accuracy = #{shootingAccuracy,jdbcType=DOUBLE},
+            </if>
+            <if test="gunStability != null">
+                gun_stability = #{gunStability,jdbcType=DOUBLE},
+            </if>
+            <if test="fireStability != null">
+                fire_stability = #{fireStability,jdbcType=DOUBLE},
+            </if>
+            <if test="score != null">
+                score = #{score,jdbcType=DOUBLE},
+            </if>
+
+        </set>
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM shoot_data
+        WHERE id = #{id,jdbcType=BIGINT}
+    </delete>
+
+</mapper>
+
